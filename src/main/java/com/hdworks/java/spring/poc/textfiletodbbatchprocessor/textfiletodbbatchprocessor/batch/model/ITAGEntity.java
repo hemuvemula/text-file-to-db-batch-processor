@@ -1,8 +1,6 @@
 package com.hdworks.java.spring.poc.textfiletodbbatchprocessor.textfiletodbbatchprocessor.batch.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +8,10 @@ import lombok.Setter;
 @Setter
 @Entity
 public class ITAGEntity {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "itagentity_gen")
+    @SequenceGenerator(name = "itagentity_gen", sequenceName = "itagentity_seq", allocationSize = 10000)
     private Integer id;
     private String TAG_AGENCY_ID;
     private String TAG_SERIAL_NUMBER;

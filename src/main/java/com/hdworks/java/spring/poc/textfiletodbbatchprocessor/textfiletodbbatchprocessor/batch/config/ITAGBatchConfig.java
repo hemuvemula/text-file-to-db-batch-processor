@@ -9,9 +9,12 @@ import com.hdworks.java.spring.poc.textfiletodbbatchprocessor.textfiletodbbatchp
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.scope.context.StepSynchronizationManager;
 import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.data.RepositoryItemWriter;
 import org.springframework.context.annotation.Bean;
@@ -55,7 +58,7 @@ public class ITAGBatchConfig {
     @Bean
     public Step itagFileIngestionsStep() {
         return new StepBuilder("itag-file-ingestion-step", jobRepository)
-                .<ITAGFileData, ITAGEntity>chunk(1000, platformTransactionManager)
+                .<ITAGFileData, ITAGEntity>chunk(10000, platformTransactionManager)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer())

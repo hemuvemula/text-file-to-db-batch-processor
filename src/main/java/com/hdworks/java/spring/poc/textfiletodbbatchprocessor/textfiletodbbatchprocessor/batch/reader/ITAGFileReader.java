@@ -17,8 +17,9 @@ public class ITAGFileReader {
 
     public ItemReader<ITAGFileData> reader() {
         FlatFileItemReader<ITAGFileData> reader = new FlatFileItemReader<>();
-        reader.setResource(new ClassPathResource("008_20240414214706.ITAG"));
+        reader.setResource(new ClassPathResource("008_20240414232106.ITAG"));
         reader.setLineMapper(lineMapper());
+        reader.setLinesToSkip(1);
         return reader;
     }
 

@@ -23,9 +23,15 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
     properties:
       hibernate:
         format_sql: true
+        order_updates: true
+        order_inserts: true
+        jdbc:
+          batch_size: 10000
 
 
 

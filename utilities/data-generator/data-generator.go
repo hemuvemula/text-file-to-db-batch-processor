@@ -49,7 +49,7 @@ func generateDetail(tagAgencyID string, serialNumber int, status int, acctInfo s
 func main() {
 	// You can change these values for the agency ID and record count as needed.
 	const fromAgencyID = "008"
-	const numRecords = 10000
+	const numRecords = 100000
 
 	statusCounts := map[int]int{
 		Valid:      0,
