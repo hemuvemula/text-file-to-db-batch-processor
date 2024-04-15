@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  batch:
+    job:
+      enabled: false
+      name: textFileToDatabaseJob
+    jdbc:
+      initialize-schema: always
+
+  datasource:
+    url: jdbc:sqlserver://spring-bath-poc.database.windows.net:1433;database=spring-batch-poc;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: hemu
+    password: apolloits@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  application:
+    name: text-to-db-batch-processor
+    admin:
+      enabled: true
+      jmx-name: org.springframework.boot:type=Admin,name=SpringBatchAdmin
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+
+
+
